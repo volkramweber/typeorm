@@ -3966,7 +3966,7 @@ export class SelectQueryBuilder<Entity>
         } else {
             let andConditions: string[] = []
             for (let key in where) {
-                if (where[key] === undefined || where[key] === null) continue
+                //if (where[key] === undefined || where[key] === null) continue
 
                 const propertyPath = embedPrefix ? embedPrefix + "." + key : key
                 const column =
@@ -3998,7 +3998,7 @@ export class SelectQueryBuilder<Entity>
                         )
                     }
 
-                    if (parameterValue === null) {
+                    if (parameterValue === null || parameterValue === undefined) {
                         andConditions.push(`${aliasPath} IS NULL`);
                     }
 
