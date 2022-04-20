@@ -3998,6 +3998,10 @@ export class SelectQueryBuilder<Entity>
                         )
                     }
 
+                    if (parameterValue === null) {
+                        andConditions.push(`${aliasPath} IS NULL`);
+                    }
+
                     // if (parameterValue === null) {
                     //     andConditions.push(`${aliasPath} IS NULL`);
                     //
