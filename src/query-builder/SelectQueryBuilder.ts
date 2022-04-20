@@ -3976,6 +3976,8 @@ export class SelectQueryBuilder<Entity>
                 const relation =
                     metadata.findRelationWithPropertyPath(propertyPath)
 
+                if (relation && (where[key] === undefined || where[key] === null)) continue
+
                 if (!embed && !column && !relation)
                     throw new EntityPropertyNotFoundError(
                         propertyPath,
