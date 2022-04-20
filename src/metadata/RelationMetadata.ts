@@ -109,7 +109,7 @@ export class RelationMetadata {
      * If its disabled you can only change a relation from inverse side of a relation or using relation query builder functionality.
      * This is useful for performance optimization since its disabling avoid multiple extra queries during entity save.
      */
-    persistenceEnabled: boolean = true
+    persistenceEnabled: boolean = false
 
     /**
      * When a child row is removed from its parent, determines if the child row should be orphaned (default) or deleted.
@@ -330,7 +330,7 @@ export class RelationMetadata {
             args.options.createForeignKeyConstraints === false ? false : true
         this.isEager = args.options.eager || false
         this.persistenceEnabled =
-            args.options.persistence === false ? false : true
+            args.options.persistence === true ? true : false
         this.orphanedRowAction = args.options.orphanedRowAction || "nullify"
         this.isTreeParent = args.isTreeParent || false
         this.isTreeChildren = args.isTreeChildren || false
